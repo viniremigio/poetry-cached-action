@@ -22,4 +22,4 @@ steps:
 ```
 
 ## Important
-This Github Action is just an example to be used in my personal projects. For more reliable actions with the same purpose, please refer to other options in the [Github Marketplace](https://github.com/marketplace?query=poetry+cache).
+This Github Action is provided as an example to be used in personal projects. For more reliable actions serving the same purpose, please refer to other options in the [Github Marketplace](https://github.com/marketplace?query=poetry+cache).
