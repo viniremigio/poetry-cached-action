@@ -1,5 +1,9 @@
 name: 'Retrieve & Cache Dependencies'
 description: 'Get the dependencies and caches them'
+branding:
+  color: yellow
+  icon: alert-octagon
+
 inputs:
   caching:
     description: 'Turn on/off caching'
