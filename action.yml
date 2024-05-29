@@ -1,0 +1,30 @@
+name: 'Retrieve & Cache Dependencies'
+description: 'Get the dependencies and caches them'
+inputs:
+  caching:
+    description: 'Turn on/off caching'
+    required: false
+    default: 'true'
+  poetry-version:
+    description: 'Poetry version'
+    required: false
+    default: '1.8.2'
+runs:
+  using: composite
+  steps:
+    - name: Cache dependencies
+      if: inputs.caching == 'true'
+      id: cache
+      uses: actions/cache@v4
+      with:
+        path: |
+            ~/.cache/pypoetry
+            .venv
+            ~/.local
+        key: poetry-dependencies-${{ hashFiles('**/poetry.lock') }}
+    - name: Install Poetry
+      if: steps.cache.outputs.cache-hit != 'true' || inputs.caching != 'true'
+      run: |
+          pip3 install poetry==${{ inputs.poetry-version }} -v
+          poetry install  --no-interaction --no-ansi
+      shell: bash
